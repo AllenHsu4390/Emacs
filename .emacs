@@ -28,10 +28,17 @@
 (set-default-window-frame-size 279 82)
 (setq show-trailing-whitespace t)
 (set-register ?e (cons 'file "~/.emacs"))
+(setq backup-directory-alist '(("." . "~/EmacsBackup"))
+      backup-by-copying t     ; Don't delink hardlinks
+      version-control t       ; Use version numbers on backups
+      delete-old-versions t   ; Automatically delete excess backups
+      kept-new-versions 20    ; how many of the newest versions to keep
+      kept-old-versions 5)    ; and how many of the old
 ;;;
 
+
 ;;; package loading
-(add-to-list 'load-path "~/pkg")
+(add-to-list 'load-path "~/EmacsPackages")
 ;;;
 
 ;;; C
@@ -47,6 +54,7 @@
 	'gdefine-kernel
 	'gwrap
 	'glet))
+
 (set-scheme-indent-functions scheme-indent-function-list)
 ;;;
 
